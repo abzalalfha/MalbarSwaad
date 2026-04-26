@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MalbarSwaad — Premium Traditional Indian Snacks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --crimson:    #8B1A1A;
+  --crimson-lt: #B22222;
+  --turmeric:   #D4A017;
+  --turmeric-lt:#F0C040;
+  --beige:      #F5EDD6;
+  --beige-dk:   #E8D9B5;
+  --forest:     #2D5016;
+  --forest-lt:  #3D6B20;
+  --charcoal:   #1C1008;
+  --warm-white: #FDFAF3;
+  --text-dark:  #1C1008;
+  --text-mid:   #4A3728;
+  --text-light: #8A7060;
+  --glass-bg:   rgba(253,250,243,0.72);
+  --glass-border: rgba(212,160,23,0.25);
+  --shadow-warm: 0 8px 40px rgba(139,26,26,0.12);
+  --shadow-gold: 0 4px 24px rgba(212,160,23,0.20);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-italic: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'DM Sans', sans-serif;
+  --radius:     16px;
+  --radius-sm:  8px;
+  --trans:      0.38s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  background: var(--warm-white);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--beige); }
+::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 3px; }
+
+/* ===== PAGE SYSTEM ===== */
+.page { display: none; animation: fadeInPage 0.5s ease both; }
+.page.active { display: block; }
+@keyframes fadeInPage { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+
+/* ===== KERALA PATTERN OVERLAY ===== */
+.kerala-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212,160,23,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139,26,26,0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A017' fill-opacity='0.04'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(253,250,243,0.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(212,160,23,0.18);
+  padding: 0 5vw;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: box-shadow var(--trans);
+}
+nav.scrolled { box-shadow: 0 2px 30px rgba(139,26,26,0.10); }
+.nav-logo {
+  display: flex; flex-direction: column; line-height: 1;
+  cursor: pointer;
+}
+.nav-logo .logo-main {
+  font-family: var(--font-serif);
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: -0.02em;
+}
+.nav-logo .logo-sub {
+  font-family: var(--font-italic);
+  font-size: 0.68rem; font-weight: 300;
+  color: var(--turmeric); letter-spacing: 0.18em;
+  text-transform: uppercase; font-style: italic;
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+}
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500;
+  color: var(--text-mid); letter-spacing: 0.03em;
+  position: relative; transition: color var(--trans);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+  background: var(--turmeric); transition: width var(--trans);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--crimson); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  background: var(--crimson); color: white !important;
+  padding: 0.5rem 1.25rem; border-radius: 50px;
+  font-size: 0.82rem !important; font-weight: 600 !important;
+  letter-spacing: 0.04em; transition: all var(--trans) !important;
+  box-shadow: 0 2px 12px rgba(139,26,26,0.25);
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--crimson-lt) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,26,26,0.32) !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--crimson); border-radius: 2px; transition: var(--trans); }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--crimson); color: white;
+  padding: 0.875rem 2rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
+  transition: all var(--trans);
+  box-shadow: 0 4px 20px rgba(139,26,26,0.28);
+}
+.btn-primary:hover { background: var(--crimson-lt); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139,26,26,0.35); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--crimson);
+  padding: 0.875rem 2rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
+  border: 2px solid var(--crimson); transition: all var(--trans);
+}
+.btn-outline:hover { background: var(--crimson); color: white; transform: translateY(-2px); }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--turmeric); color: var(--charcoal);
+  padding: 0.875rem 2rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em;
+  transition: all var(--trans);
+  box-shadow: 0 4px 20px rgba(212,160,23,0.30);
+}
+.btn-gold:hover { background: var(--turmeric-lt); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,160,23,0.40); }
+
+/* ===== SECTION WRAPPER ===== */
+.section { padding: 6rem 5vw; }
+.section-sm { padding: 4rem 5vw; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-italic); font-size: 0.95rem; font-style: italic;
+  color: var(--turmeric); letter-spacing: 0.08em; margin-bottom: 1rem;
+}
+.section-label::before, .section-label::after {
+  content: ''; display: block; width: 28px; height: 1px; background: var(--turmeric); opacity: 0.6;
+}
+.section-title {
+  font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700; line-height: 1.2; color: var(--text-dark);
+  margin-bottom: 1.2rem;
+}
+.section-title span { color: var(--crimson); }
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-light); max-width: 54ch; line-height: 1.8;
+}
+.text-center { text-align: center; }
+.text-center .section-subtitle { margin: 0 auto; }
+.divider {
+  width: 60px; height: 3px; margin: 1.5rem 0;
+  background: linear-gradient(90deg, var(--crimson), var(--turmeric));
+  border-radius: 2px;
+}
+.divider.center { margin: 1.5rem auto; }
+
+/* ===== SNACK IMAGE PLACEHOLDERS — SVG illustrations ===== */
+.snack-img {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: inherit; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+
+/* ===== FLOATING SPICE BADGE ===== */
+.spice-badge {
+  position: absolute; background: var(--turmeric); color: var(--charcoal);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 50px; text-transform: uppercase;
+  box-shadow: var(--shadow-gold);
+}
+
+/* ========================================
+   HOME PAGE
+   ======================================== */
+
+/* --- HERO --- */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  background: linear-gradient(135deg, #1C0A04 0%, #2D1810 40%, #1A0C06 100%);
+  padding-top: 72px;
+}
+.hero-bg-art {
+  position: absolute; inset: 0; overflow: hidden; z-index: 0;
+}
+.hero-bg-art svg { position: absolute; }
+.hero-content {
+  position: relative; z-index: 2; padding: 4rem 5vw;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  width: 100%;
+}
+.hero-left { }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(212,160,23,0.15); border: 1px solid rgba(212,160,23,0.30);
+  color: var(--turmeric-lt); padding: 6px 16px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: slideInLeft 0.8s ease both;
+}
+.hero-eyebrow .dot { width: 6px; height: 6px; background: var(--turmeric); border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.hero-h1 {
+  font-family: var(--font-serif); font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 700; line-height: 1.1; color: white;
+  margin-bottom: 1.5rem;
+  animation: slideInLeft 0.9s 0.1s ease both;
+}
+.hero-h1 em { font-style: italic; color: var(--turmeric-lt); display: block; }
+.hero-h1 .line-accent {
+  color: white; position: relative; display: inline-block;
+}
+.hero-h1 .line-accent::after {
+  content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--turmeric), transparent);
+}
+.hero-tagline {
+  font-size: 1.1rem; color: rgba(255,255,255,0.72); max-width: 46ch;
+  margin-bottom: 2.5rem; line-height: 1.8;
+  animation: slideInLeft 1s 0.2s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: slideInLeft 1s 0.3s ease both;
+}
+.hero-trust {
+  margin-top: 3rem; display: flex; gap: 2rem; align-items: center;
+  animation: slideInLeft 1s 0.4s ease both;
+}
+.hero-trust-item { display: flex; flex-direction: column; }
+.trust-num {
+  font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; color: var(--turmeric-lt);
+  line-height: 1;
+}
+.trust-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+.trust-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.15); }
+
+.hero-right {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  animation: slideInRight 1s 0.2s ease both;
+}
+.hero-plate {
+  position: relative; width: min(480px, 90vw); height: min(480px, 90vw);
+}
+.hero-plate-bg {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(212,160,23,0.2), rgba(212,160,23,0.05) 60%, transparent);
+  border: 1px solid rgba(212,160,23,0.15);
+  animation: rotateSlow 30s linear infinite;
+}
+@keyframes rotateSlow { to { transform: rotate(360deg); } }
+.hero-plate-inner {
+  position: absolute; inset: 20px; border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 80px rgba(212,160,23,0.20), 0 20px 60px rgba(0,0,0,0.5);
+}
+.hero-snack-svg {
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, #2D1A0A, #1A0D05);
+}
+.floating-chip {
+  position: absolute; border-radius: 50%;
+  backdrop-filter: blur(10px);
+  background: rgba(212,160,23,0.12);
+  border: 1px solid rgba(212,160,23,0.25);
+  display: flex; align-items: center; justify-content: center;
+  animation: float 4s ease-in-out infinite;
+}
+.floating-chip:nth-child(2) { width: 80px; height: 80px; top: 5%; right: 10%; animation-delay: 0s; }
+.floating-chip:nth-child(3) { width: 60px; height: 60px; bottom: 15%; left: 2%; animation-delay: 1.2s; }
+.floating-chip:nth-child(4) { width: 50px; height: 50px; top: 50%; right: -4%; animation-delay: 2.1s; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.chip-icon { font-size: 1.4rem; }
+
+@keyframes slideInLeft { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:none} }
+@keyframes slideInRight { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:none} }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; z-index: 3;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(212,160,23,0.6), transparent); }
+
+/* --- MARQUEE STRIP --- */
+.marquee-strip {
+  background: var(--crimson); color: white; overflow: hidden;
+  padding: 0.75rem 0; white-space: nowrap;
+}
+.marquee-inner { display: inline-flex; animation: marqueeScroll 22s linear infinite; gap: 0; }
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 1rem;
+  padding: 0 2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.marquee-dot { width: 5px; height: 5px; background: var(--turmeric); border-radius: 50%; }
+@keyframes marqueeScroll { to { transform: translateX(-50%); } }
+
+/* --- STORY SECTION --- */
+.story-section {
+  background: var(--beige); position: relative; overflow: hidden;
+}
+.story-section::before {
+  content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='400' height='600' viewBox='0 0 400 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='300' cy='200' rx='180' ry='280' fill='%238B1A1A' fill-opacity='0.04'/%3E%3Cellipse cx='200' cy='420' rx='140' ry='160' fill='%23D4A017' fill-opacity='0.05'/%3E%3C/svg%3E") no-repeat center;
+  background-size: cover; pointer-events: none;
+}
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.story-images { position: relative; height: 520px; }
+.story-img-main {
+  position: absolute; left: 0; top: 0; width: 75%; height: 80%;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-warm);
+}
+.story-img-accent {
+  position: absolute; right: 0; bottom: 0; width: 50%; height: 50%;
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  border: 4px solid var(--warm-white);
+}
+.story-badge {
+  position: absolute; top: 50%; left: 55%; transform: translate(-50%,-50%);
+  width: 90px; height: 90px; border-radius: 50%;
+  background: var(--crimson); color: white;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; line-height: 1;
+  box-shadow: 0 8px 30px rgba(139,26,26,0.35); z-index: 3;
+}
+.story-badge small { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; margin-top: 2px; }
+.story-text .quote-mark {
+  font-family: var(--font-serif); font-size: 5rem; color: var(--turmeric); opacity: 0.3;
+  line-height: 0.5; margin-bottom: 1rem; display: block;
+}
+.story-pullquote {
+  font-family: var(--font-italic); font-size: 1.4rem; font-style: italic;
+  color: var(--crimson); line-height: 1.5; margin: 1.5rem 0;
+  border-left: 3px solid var(--turmeric); padding-left: 1.5rem;
+}
+
+/* --- FEATURED PRODUCTS --- */
+.products-section { background: var(--warm-white); }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.8rem; margin-top: 3rem; }
+.product-card {
+  background: white; border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 2px 20px rgba(28,16,8,0.06);
+  transition: all var(--trans); cursor: pointer;
+  border: 1px solid rgba(212,160,23,0.10);
+  position: relative;
+}
+.product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(28,16,8,0.12); border-color: rgba(212,160,23,0.25); }
+.product-card-img {
+  height: 220px; overflow: hidden; position: relative;
+  background: var(--beige);
+}
+.product-card-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(28,16,8,0.3), transparent 60%);
+  opacity: 0; transition: opacity var(--trans);
+}
+.product-card:hover .product-card-img::after { opacity: 1; }
+.product-card-img svg { transition: transform 0.6s ease; }
+.product-card:hover .product-card-img svg { transform: scale(1.06); }
+.product-tag {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: var(--turmeric); color: var(--charcoal);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 10px; border-radius: 50px; text-transform: uppercase;
+}
+.product-card-body { padding: 1.4rem; }
+.product-name {
+  font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+  color: var(--text-dark); margin-bottom: 0.4rem;
+}
+.product-desc { font-size: 0.875rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1.2rem; }
+.product-meta { display: flex; align-items: center; justify-content: space-between; }
+.product-price {
+  font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--crimson);
+}
+.product-price span { font-family: var(--font-sans); font-size: 0.72rem; color: var(--text-light); font-weight: 400; }
+.card-btn {
+  background: var(--beige-dk); color: var(--text-dark);
+  padding: 8px 16px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+  transition: all var(--trans);
+}
+.card-btn:hover { background: var(--crimson); color: white; }
+.rating { display: flex; gap: 2px; }
+.star { color: var(--turmeric); font-size: 0.8rem; }
+
+/* --- WHY CHOOSE US --- */
+.why-section {
+  background: linear-gradient(135deg, #1C0A04 0%, #2D1810 60%, #1C1008 100%);
+  position: relative; overflow: hidden;
+}
+.why-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40z' fill='%23D4A017' fill-opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.why-section .section-title { color: white; }
+.why-section .section-subtitle { color: rgba(255,255,255,0.55); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.why-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,160,23,0.15);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all var(--trans);
+  backdrop-filter: blur(8px);
+}
+.why-card:hover { background: rgba(212,160,23,0.08); border-color: rgba(212,160,23,0.35); transform: translateY(-4px); }
+.why-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(212,160,23,0.15); border: 1px solid rgba(212,160,23,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 1.2rem;
+}
+.why-title { font-family: var(--font-serif); font-size: 1.15rem; color: white; margin-bottom: 0.5rem; font-weight: 600; }
+.why-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* --- TESTIMONIALS --- */
+.testimonials-section { background: var(--beige); }
+.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.testimonial-card {
+  background: white; border-radius: var(--radius); padding: 2rem;
+  box-shadow: 0 2px 20px rgba(28,16,8,0.06);
+  border: 1px solid rgba(212,160,23,0.10);
+  transition: transform var(--trans), box-shadow var(--trans);
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,16,8,0.10); }
+.testimonial-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
+.testimonial-text {
+  font-family: var(--font-italic); font-size: 1rem; font-style: italic;
+  color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem;
+}
+.testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--beige-dk); display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; color: var(--crimson);
+  flex-shrink: 0;
+}
+.author-name { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); }
+.author-loc { font-size: 0.78rem; color: var(--text-light); }
+
+/* --- EXPANSION SECTION --- */
+.expansion-section { background: var(--warm-white); }
+.expansion-inner {
+  background: linear-gradient(135deg, var(--crimson), #6B1010);
+  border-radius: 24px; padding: 4rem; position: relative; overflow: hidden;
+}
+.expansion-inner::before {
+  content: ''; position: absolute; top: -50%; right: -10%;
+  width: 60%; height: 200%; border-radius: 50%;
+  background: rgba(255,255,255,0.04); pointer-events: none;
+}
+.expansion-inner::after {
+  content: ''; position: absolute; bottom: -30%; left: 20%;
+  width: 40%; height: 120%; border-radius: 50%;
+  background: rgba(212,160,23,0.10); pointer-events: none;
+}
+.expansion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.expansion-title {
+  font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700; color: white; line-height: 1.2; margin-bottom: 1rem;
+}
+.expansion-subtitle { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+.city-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.city-pill {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 6px 16px; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600;
+}
+.city-pill.active { background: var(--turmeric); color: var(--charcoal); border-color: var(--turmeric); }
+.expansion-map {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative; z-index: 1;
+}
+.map-stat {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px; padding: 1.4rem; backdrop-filter: blur(8px);
+}
+.map-stat-num {
+  font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--turmeric-lt); line-height: 1;
+}
+.map-stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: 0.04em; }
+
+/* --- GALLERY --- */
+.gallery-section { background: var(--beige); }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 240px);
+  gap: 12px; margin-top: 2.5rem;
+}
+.gallery-item {
+  border-radius: 12px; overflow: hidden; cursor: pointer; position: relative;
+  transition: transform var(--trans);
+}
+.gallery-item:hover { transform: scale(1.02); z-index: 2; }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-overlay {
+  position: absolute; inset: 0; background: rgba(139,26,26,0.55);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity var(--trans);
+  font-size: 2rem; color: white;
+}
+
+/* --- NEWSLETTER --- */
+.newsletter-section {
+  background: var(--charcoal); padding: 5rem 5vw; text-align: center;
+}
+.newsletter-section .section-title { color: white; }
+.newsletter-section .section-subtitle { color: rgba(255,255,255,0.5); margin: 0 auto 2rem; }
+.newsletter-form {
+  display: flex; max-width: 480px; margin: 0 auto; gap: 0;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(212,160,23,0.2);
+  border-radius: 50px; padding: 5px;
+}
+.newsletter-input {
+  flex: 1; background: none; border: none; outline: none;
+  color: white; padding: 0.6rem 1.2rem; font-size: 0.9rem; font-family: var(--font-sans);
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
+
+/* --- FOOTER --- */
+footer {
+  background: #110702; color: rgba(255,255,255,0.6);
+  padding: 4rem 5vw 2rem;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand .logo-main { color: var(--turmeric-lt); font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700; display: block; margin-bottom: 0.3rem; }
+.footer-brand .logo-sub { font-family: var(--font-italic); font-size: 0.72rem; color: rgba(212,160,23,0.5); letter-spacing: 0.15em; font-style: italic; text-transform: uppercase; display: block; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.875rem; line-height: 1.8; max-width: 30ch; }
+.footer-socials { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
+.social-link {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; transition: all var(--trans);
+}
+.social-link:hover { background: var(--crimson); border-color: var(--crimson); color: white; transform: translateY(-2px); }
+.footer-col h4 { font-family: var(--font-serif); color: white; font-size: 1rem; margin-bottom: 1rem; font-weight: 600; }
+.footer-col ul li { margin-bottom: 0.5rem; }
+.footer-col ul a { font-size: 0.875rem; transition: color var(--trans); }
+.footer-col ul a:hover { color: var(--turmeric-lt); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem;
+}
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a:hover { color: var(--turmeric-lt); }
+
+/* ========================================
+   PRODUCTS PAGE
+   ======================================== */
+.page-hero {
+  min-height: 40vh; background: linear-gradient(135deg, #1C0A04, #2D1810);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 8rem 5vw 4rem; position: relative; overflow: hidden;
+}
+.page-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40z' fill='%23D4A017' fill-opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.page-hero .section-title { color: white; }
+.page-hero .section-label { justify-content: center; }
+.page-hero .divider { margin: 0 auto; }
+.products-page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.product-full-card {
+  background: white; border-radius: var(--radius); overflow: hidden;
+  box-shadow: 0 4px 24px rgba(28,16,8,0.07);
+  border: 1px solid rgba(212,160,23,0.10);
+  transition: all var(--trans); cursor: pointer;
+}
+.product-full-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(28,16,8,0.12); }
+.product-full-img { height: 260px; overflow: hidden; position: relative; background: var(--beige); }
+.product-full-body { padding: 1.6rem; }
+.product-full-name { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.3rem; }
+.product-full-region { font-size: 0.78rem; color: var(--turmeric); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.product-full-desc { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.4rem; }
+.product-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.product-tag-pill {
+  background: var(--beige); color: var(--text-mid);
+  padding: 3px 10px; border-radius: 50px; font-size: 0.72rem; font-weight: 600;
+}
+.product-full-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+
+/* ========================================
+   PRODUCT DETAIL PAGE
+   ======================================== */
+.detail-hero {
+  padding-top: 72px;
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh;
+}
+.detail-hero-img {
+  background: var(--beige); position: relative; overflow: hidden;
+}
+.detail-hero-content {
+  padding: 5rem 5vw; display: flex; flex-direction: column; justify-content: center;
+  background: var(--warm-white);
+}
+.detail-hero-content .product-region-tag {
+  display: inline-block; background: var(--turmeric); color: var(--charcoal);
+  padding: 4px 14px; border-radius: 50px; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem;
+}
+.detail-hero-content h1 {
+  font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; line-height: 1.1;
+}
+.detail-hero-content .tagline {
+  font-family: var(--font-italic); font-style: italic; color: var(--crimson);
+  font-size: 1.1rem; margin-bottom: 1.5rem;
+}
+.profile-bars { display: flex; flex-direction: column; gap: 0.7rem; margin: 1.5rem 0; }
+.profile-bar { display: flex; align-items: center; gap: 1rem; }
+.profile-label { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); width: 90px; flex-shrink: 0; }
+.profile-track { flex: 1; height: 6px; background: var(--beige-dk); border-radius: 3px; overflow: hidden; }
+.profile-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--crimson), var(--turmeric)); }
+.ingredients-list { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.2rem 0; }
+.ing-pill { background: var(--beige); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; color: var(--text-mid); font-weight: 500; }
+.why-special {
+  background: linear-gradient(135deg, rgba(139,26,26,0.05), rgba(212,160,23,0.08));
+  border: 1px solid rgba(139,26,26,0.12);
+  border-radius: 14px; padding: 1.4rem; margin: 1.5rem 0;
+}
+.why-special h3 { font-family: var(--font-serif); font-size: 1rem; color: var(--crimson); margin-bottom: 0.5rem; }
+.why-special p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; }
+.detail-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+/* ========================================
+   ABOUT PAGE
+   ======================================== */
+.about-timeline { position: relative; padding: 0 0 0 2rem; }
+.about-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--crimson), var(--turmeric)); }
+.timeline-item { position: relative; margin-bottom: 3rem; padding-left: 2rem; }
+.timeline-dot {
+  position: absolute; left: -2.6rem; top: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--crimson); border: 3px solid var(--warm-white);
+  box-shadow: 0 0 0 2px var(--crimson);
+}
+.timeline-year { font-size: 0.78rem; font-weight: 700; color: var(--turmeric); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.timeline-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+.timeline-desc { font-size: 0.875rem; color: var(--text-light); line-height: 1.7; }
+.mission-vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+.mv-card {
+  border-radius: var(--radius); padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.mv-card.mission { background: linear-gradient(135deg, var(--crimson), #6B1010); color: white; }
+.mv-card.vision { background: linear-gradient(135deg, var(--charcoal), #2D1810); color: white; }
+.mv-card .label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  opacity: 0.6; margin-bottom: 0.6rem;
+}
+.mv-card h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.mv-card p { font-size: 0.9rem; opacity: 0.75; line-height: 1.8; }
+.team-values { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2rem; }
+.value-card {
+  text-align: center; padding: 2rem 1.5rem;
+  background: white; border-radius: var(--radius);
+  border: 1px solid rgba(212,160,23,0.12);
+  box-shadow: 0 2px 16px rgba(28,16,8,0.05);
+}
+.value-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.value-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.4rem; }
+.value-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+/* ========================================
+   SERVICES PAGE
+   ======================================== */
+.service-card {
+  background: white; border-radius: var(--radius); padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(28,16,8,0.06);
+  border: 1px solid rgba(212,160,23,0.10);
+  transition: all var(--trans);
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--crimson), var(--turmeric));
+  opacity: 0; transition: opacity var(--trans);
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(28,16,8,0.10); }
+.service-card:hover::before { opacity: 1; }
+.service-icon-wrap {
+  width: 60px; height: 60px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139,26,26,0.10), rgba(212,160,23,0.10));
+  border: 1px solid rgba(212,160,23,0.20);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin-bottom: 1.4rem;
+}
+.service-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+.service-desc { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem; }
+.service-perks { list-style: none; margin-bottom: 1.5rem; }
+.service-perks li {
+  font-size: 0.85rem; color: var(--text-mid); padding: 4px 0;
+  display: flex; gap: 0.5rem; align-items: center;
+}
+.service-perks li::before { content: '✦'; color: var(--turmeric); font-size: 0.6rem; flex-shrink: 0; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; margin-top: 2.5rem; }
+
+/* Contact CTA */
+.contact-cta-section {
+  background: var(--beige);
+}
+.contact-cta-inner {
+  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+  background: white; border-radius: 20px; padding: 3rem;
+  box-shadow: 0 4px 30px rgba(28,16,8,0.07);
+  border: 1px solid rgba(212,160,23,0.12);
+}
+.contact-form { display: grid; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); letter-spacing: 0.04em; }
+.form-input {
+  padding: 0.7rem 1rem; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--beige-dk); background: var(--warm-white);
+  font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-dark);
+  transition: border-color var(--trans), box-shadow var(--trans);
+  outline: none;
+}
+.form-input:focus { border-color: var(--turmeric); box-shadow: 0 0 0 3px rgba(212,160,23,0.12); }
+.form-textarea { resize: vertical; min-height: 100px; }
+
+/* ===== ANIMATIONS FOR SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav-overlay {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(253,250,243,0.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+}
+.mobile-nav-overlay.open { display: flex; }
+.mobile-nav-overlay a {
+  font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; color: var(--text-dark);
+  transition: color var(--trans);
+}
+.mobile-nav-overlay a:hover { color: var(--crimson); }
+.mobile-nav-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  font-size: 1.5rem; cursor: pointer; color: var(--text-mid);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .story-grid { grid-template-columns: 1fr; }
+  .story-images { display: none; }
+  .expansion-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(4) { grid-column: span 1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .detail-hero { grid-template-columns: 1fr; }
+  .detail-hero-img { height: 300px; }
+  .mission-vision-grid { grid-template-columns: 1fr; }
+  .team-values { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-cta-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section { padding: 4rem 5vw; }
+  .products-grid, .products-page-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .team-values { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; border-radius: 12px; }
+  .hero-ctas { flex-direction: column; }
+}
+@media (max-width: 400px) {
+  .products-grid, .products-page-grid, .why-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="navigate('home')">
+    <span class="logo-main">MalbarSwaad</span>
+    <span class="logo-sub">Authentic • Traditional • Premium</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="navigate('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="navigate('products')" id="nav-products">Products</a></li>
+    <li><a href="#" onclick="navigate('about')" id="nav-about">Our Story</a></li>
+    <li><a href="#" onclick="navigate('services')" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="navigate('services')" class="nav-cta">Order Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===== MOBILE NAV ===== -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()">✕</span>
+  <a href="#" onclick="navigate('home');toggleMobileNav()">Home</a>
+  <a href="#" onclick="navigate('products');toggleMobileNav()">Products</a>
+  <a href="#" onclick="navigate('about');toggleMobileNav()">Our Story</a>
+  <a href="#" onclick="navigate('services');toggleMobileNav()">Services</a>
+</div>
+
+<!-- =============================================
+     HOME PAGE
+     ============================================= -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-art">
+      <svg viewBox="0 0 800 700" style="top:-100px;right:-100px;width:600px;opacity:0.4">
+        <circle cx="400" cy="350" r="300" fill="none" stroke="#D4A017" stroke-width="1" stroke-dasharray="4 8"/>
+        <circle cx="400" cy="350" r="200" fill="none" stroke="#8B1A1A" stroke-width="0.5" stroke-dasharray="2 6"/>
+      </svg>
+      <svg viewBox="0 0 400 400" style="bottom:-50px;left:-50px;width:350px;opacity:0.2">
+        <polygon points="200,0 400,200 200,400 0,200" fill="none" stroke="#D4A017" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <div class="dot"></div>
+          From the Kitchens of Kerala
+        </div>
+        <h1 class="hero-h1">
+          Bringing India's
+          <em>Traditional</em>
+          <span class="line-accent">Flavors Back</span>
+        </h1>
+        <p class="hero-tagline">Handcrafted with age-old recipes, premium ingredients, and the warmth of authentic Kerala tradition — delivered to your doorstep.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn-primary" onclick="navigate('products')">Explore Products ↗</a>
+          <a href="#" class="btn-outline" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.3)" onclick="navigate('services')">Order Now</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-item"><span class="trust-num">12+</span><span class="trust-lbl">Years of Craft</span></div>
+          <div class="trust-divider"></div>
+          <div class="hero-trust-item"><span class="trust-num">50K+</span><span class="trust-lbl">Happy Customers</span></div>
+          <div class="trust-divider"></div>
+          <div class="hero-trust-item"><span class="trust-num">4.9★</span><span class="trust-lbl">Avg. Rating</span></div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-plate">
+          <div class="hero-plate-bg"></div>
+          <div class="hero-plate-inner">
+            <!-- Hero SVG illustration — traditional snacks on banana leaf -->
+            <svg class="hero-snack-svg" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+              <!-- Banana leaf base -->
+              <ellipse cx="220" cy="240" rx="190" ry="150" fill="#2D5016" opacity="0.85"/>
+              <path d="M30 220 Q120 160 220 240 Q320 300 410 220" stroke="#3D6B20" stroke-width="2" fill="none"/>
+              <path d="M30 250 Q120 190 220 260 Q320 320 410 245" stroke="#3D6B20" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <!-- Wooden plate edge -->
+              <ellipse cx="220" cy="240" rx="195" ry="155" fill="none" stroke="#6B4226" stroke-width="4" opacity="0.5"/>
+              <!-- Banana chips pile -->
+              <g transform="translate(130,200)">
+                <ellipse cx="0" cy="0" rx="35" ry="15" fill="#D4A017" transform="rotate(-15)" opacity="0.95"/>
+                <ellipse cx="10" cy="-12" rx="32" ry="13" fill="#C8940F" transform="rotate(-8)" opacity="0.95"/>
+                <ellipse cx="-8" cy="-22" rx="30" ry="12" fill="#E0B020" transform="rotate(-20)" opacity="0.95"/>
+                <ellipse cx="5" cy="-33" rx="28" ry="11" fill="#D4A017" transform="rotate(-5)" opacity="0.90"/>
+                <ellipse cx="-5" cy="-42" rx="25" ry="10" fill="#C8940F" transform="rotate(-12)" opacity="0.85"/>
+              </g>
+              <!-- Murukku spiral -->
+              <g transform="translate(280,190)">
+                <path d="M0,0 C5,-20 25,-30 35,-18 C45,-6 40,14 25,20 C10,26 -8,18 -12,4 C-16,-10 -8,-26 5,-30 C20,-34 38,-24 44,-8 C50,8 44,28 28,34 C12,40 -8,32 -14,16" stroke="#8B1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M0,0 C5,-20 25,-30 35,-18 C45,-6 40,14 25,20 C10,26 -8,18 -12,4 C-16,-10 -8,-26 5,-30 C20,-34 38,-24 44,-8 C50,8 44,28 28,34 C12,40 -8,32 -14,16" stroke="#A0201E" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+              </g>
+              <!-- Mixture bits -->
+              <g transform="translate(175,270)">
+                <rect x="-5" y="-3" width="10" height="6" rx="2" fill="#C0781A" transform="rotate(20)"/>
+                <rect x="8" y="5" width="8" height="5" rx="2" fill="#8B1A1A" transform="rotate(-15)"/>
+                <rect x="-12" y="8" width="9" height="5" rx="2" fill="#D4A017" transform="rotate(35)"/>
+                <rect x="18" y="-2" width="7" height="5" rx="2" fill="#C0781A" transform="rotate(-30)"/>
+                <rect x="0" y="15" width="8" height="5" rx="2" fill="#8B4513" transform="rotate(10)"/>
+                <circle cx="-8" cy="-10" r="4" fill="#228B22" opacity="0.8"/>
+                <circle cx="25" cy="10" r="3.5" fill="#D4A017" opacity="0.9"/>
+                <circle cx="5" cy="22" r="3" fill="#C0781A"/>
+              </g>
+              <!-- Potato chips -->
+              <g transform="translate(230,150)">
+                <path d="M-20,10 Q-10,-15 10,-18 Q28,-20 32,-5 Q36,10 22,22 Q8,34 -8,28 Q-22,22 -20,10z" fill="#F5E642" opacity="0.9"/>
+                <path d="M-15,8 Q-5,-12 12,-15 Q26,-17 29,-4 Q32,9 19,19 Q6,29 -6,24 Q-18,19 -15,8z" fill="#F0DC30" opacity="0.5"/>
+                <path d="M-5,-5 Q-18,15 -20,30" stroke="#C8B800" stroke-width="1.5" fill="none"/>
+                <path d="M5,-8 Q-5,14 -8,28" stroke="#C8B800" stroke-width="1" fill="none" opacity="0.6"/>
+              </g>
+              <!-- Spice accents -->
+              <circle cx="90" cy="280" r="5" fill="#D4A017" opacity="0.7"/>
+              <circle cx="350" cy="280" r="4" fill="#8B1A1A" opacity="0.6"/>
+              <circle cx="200" cy="160" r="3.5" fill="#D4A017" opacity="0.5"/>
+              <!-- Leaf veins -->
+              <line x1="70" y1="300" x2="370" y2="200" stroke="#4A7030" stroke-width="1" opacity="0.4"/>
+              <line x1="50" y1="330" x2="390" y2="230" stroke="#4A7030" stroke-width="0.8" opacity="0.3"/>
+              <!-- Brass accent ring -->
+              <ellipse cx="220" cy="240" rx="185" ry="148" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="6 12" opacity="0.3"/>
+              <!-- Ambient glow -->
+              <radialGradient id="glowHero" cx="50%" cy="45%">
+                <stop offset="0%" stop-color="#D4A017" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#D4A017" stop-opacity="0"/>
+              </radialGradient>
+              <ellipse cx="220" cy="220" rx="200" ry="180" fill="url(#glowHero)"/>
+            </svg>
+          </div>
+          <div class="floating-chip"><span class="chip-icon">🍌</span></div>
+          <div class="floating-chip"><span class="chip-icon">🌶️</span></div>
+          <div class="floating-chip"><span class="chip-icon">✨</span></div>
+          <div class="spice-badge" style="bottom:8%;right:5%;z-index:10">100% Natural</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item"><span class="marquee-dot"></span>Banana Chips</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Tomato Murukku</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Payyoli Mixture</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Potato Chips</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kerala Authentic</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>No Preservatives</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Premium Quality</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Loved Across India</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Banana Chips</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Tomato Murukku</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Payyoli Mixture</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Potato Chips</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Kerala Authentic</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>No Preservatives</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Premium Quality</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Loved Across India</span>
+    </div>
+  </div>
+
+  <!-- OUR STORY SECTION -->
+  <section class="section story-section kerala-pattern reveal">
+    <div class="story-grid">
+      <div class="story-images">
+        <div class="story-img-main">
+          <svg viewBox="0 0 360 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#2D1A0A">
+            <!-- Kitchen scene -->
+            <rect width="360" height="420" fill="#1A0D05"/>
+            <!-- Background warmth -->
+            <radialGradient id="kitchenGlow" cx="50%" cy="60%">
+              <stop offset="0%" stop-color="#C0781A" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#1A0D05" stop-opacity="0"/>
+            </radialGradient>
+            <rect width="360" height="420" fill="url(#kitchenGlow)"/>
+            <!-- Large wok/kadhai -->
+            <ellipse cx="180" cy="270" rx="120" ry="40" fill="#3D2010" stroke="#6B3A1A" stroke-width="2"/>
+            <ellipse cx="180" cy="260" rx="100" ry="32" fill="#5A2E15"/>
+            <ellipse cx="180" cy="255" rx="95" ry="28" fill="#6B3A1A"/>
+            <!-- Oil shimmer -->
+            <ellipse cx="175" cy="258" rx="60" ry="18" fill="#D4A017" opacity="0.25"/>
+            <ellipse cx="185" cy="252" rx="40" ry="10" fill="#FFD700" opacity="0.15"/>
+            <!-- Banana chips floating -->
+            <g opacity="0.95">
+              <ellipse cx="155" cy="252" rx="16" ry="7" fill="#D4A017" transform="rotate(20,155,252)"/>
+              <ellipse cx="195" cy="248" rx="15" ry="6" fill="#C8940F" transform="rotate(-10,195,248)"/>
+              <ellipse cx="175" cy="245" rx="14" ry="6" fill="#E0B020" transform="rotate(5,175,245)"/>
+              <ellipse cx="210" cy="260" rx="13" ry="5.5" fill="#D4A017" transform="rotate(30,210,260)"/>
+              <ellipse cx="148" cy="265" rx="14" ry="5" fill="#C8940F" transform="rotate(-25,148,265)"/>
+            </g>
+            <!-- Steam lines -->
+            <g stroke="#D4A017" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35">
+              <path d="M150,230 Q145,210 152,190 Q157,172 150,152"/>
+              <path d="M175,225 Q170,205 177,185 Q182,167 175,147"/>
+              <path d="M200,228 Q195,208 202,188 Q207,170 200,150"/>
+              <path d="M225,232 Q220,212 227,192 Q232,174 225,154"/>
+            </g>
+            <!-- Banana hanging -->
+            <path d="M280,30 Q290,60 275,90 Q265,110 250,115" stroke="#3D6B20" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <ellipse cx="248" cy="120" rx="18" ry="8" fill="#D4A017" transform="rotate(-20,248,120)"/>
+            <ellipse cx="260" cy="108" rx="17" ry="7" fill="#C8940F" transform="rotate(-30,260,108)"/>
+            <ellipse cx="270" cy="95" rx="16" ry="7" fill="#D4A017" transform="rotate(-15,270,95)"/>
+            <!-- Hands/copper ladle -->
+            <rect x="165" y="160" width="6" height="80" rx="3" fill="#8B5E3C"/>
+            <ellipse cx="168" cy="158" rx="18" ry="8" fill="#C0781A"/>
+            <!-- Banana leaf accent -->
+            <path d="M30,300 Q80,240 140,260 Q200,280 220,320 Q180,340 120,330 Q60,320 30,300z" fill="#2D5016" opacity="0.6"/>
+            <line x1="75" y1="280" x2="200" y2="310" stroke="#3D6B20" stroke-width="1" opacity="0.5"/>
+            <!-- Text overlay -->
+            <text x="180" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#D4A017" opacity="0.7" font-style="italic">Traditional Kerala Kitchen</text>
+          </svg>
+        </div>
+        <div class="story-img-accent">
+          <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#F5EDD6">
+            <!-- Spice arrangement top-down -->
+            <rect width="200" height="200" fill="#F5EDD6"/>
+            <!-- Banana leaf base -->
+            <ellipse cx="100" cy="105" rx="88" ry="72" fill="#3D6B20" opacity="0.9"/>
+            <line x1="20" y1="105" x2="185" y2="105" stroke="#2D5016" stroke-width="1.5" opacity="0.5"/>
+            <!-- Product piles -->
+            <g transform="translate(65,90)">
+              <ellipse cx="0" cy="0" rx="22" ry="10" fill="#D4A017"/>
+              <ellipse cx="0" cy="-8" rx="20" ry="9" fill="#C8940F"/>
+              <ellipse cx="0" cy="-15" rx="18" ry="8" fill="#E0B020"/>
+            </g>
+            <g transform="translate(130,100)">
+              <path d="M0,0 C3,-12 15,-18 20,-10 C25,-2 22,8 14,12 C6,16 -4,10 -6,2 C-8,-6 -4,-16 3,-18" stroke="#8B1A1A" stroke-width="3.5" fill="none"/>
+            </g>
+            <!-- Gold rim -->
+            <ellipse cx="100" cy="105" rx="92" ry="76" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
+            <text x="100" y="172" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#D4A017" opacity="0.8" font-style="italic">Served Fresh Daily</text>
+          </svg>
+        </div>
+        <div class="story-badge">12+ <small>Years of Craft</small></div>
+      </div>
+      <div class="story-text">
+        <div class="section-label">Our Roots</div>
+        <h2 class="section-title">A Recipe Passed Down <span>Through Generations</span></h2>
+        <div class="divider"></div>
+        <blockquote class="story-pullquote">"Every chip carries the memory of my grandmother's hands, the fragrance of her kitchen, and the love she stirred into every batch."</blockquote>
+        <p style="color:var(--text-mid);line-height:1.9;margin-bottom:1.2rem">MalbarSwaad was born in a small kitchen in Kozhikode, Kerala — where recipes were never written but whispered from mother to daughter. Our founder, inspired by the rich snack traditions of Malabar, set out to revive these treasures for modern India.</p>
+        <p style="color:var(--text-light);line-height:1.9;margin-bottom:2rem">From the golden banana chips fried in pure coconut oil, to the fiery crunch of Payyoli Mixture — every product we make is a tribute to authentic craftsmanship. No shortcuts. No artificial flavours. Just pure, honest tradition.</p>
+        <a href="#" class="btn-primary" onclick="navigate('about')">Read Our Full Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section products-section">
+    <div class="text-center reveal">
+      <div class="section-label">Our Signatures</div>
+      <h2 class="section-title">Taste the <span>Tradition</span></h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle">Four iconic snacks. Each with a story. Each crafted to perfection using age-old Malabar recipes.</p>
+    </div>
+    <div class="products-grid">
+      <!-- Product 1: Banana Chips -->
+      <div class="product-card reveal reveal-delay-1" onclick="showDetail('banana-chips')">
+        <div class="product-card-img">
+          <span class="product-tag">Bestseller</span>
+          <svg viewBox="0 0 280 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#2D1A0A,#3D2510)">
+            <radialGradient id="bcGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#D4A017" stop-opacity="0.2"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="220" fill="url(#bcGlow)"/>
+            <!-- Large pile of banana chips -->
+            <g transform="translate(140,130)">
+              <ellipse cx="0" cy="20" rx="80" ry="28" fill="#1A0D05" opacity="0.4"/>
+              <ellipse cx="-30" cy="10" rx="38" ry="16" fill="#C8940F" transform="rotate(25,-30,10)"/>
+              <ellipse cx="15" cy="0" rx="40" ry="17" fill="#D4A017" transform="rotate(-15,15,0)"/>
+              <ellipse cx="-10" cy="-15" rx="36" ry="15" fill="#E0B020" transform="rotate(10,-10,-15)"/>
+              <ellipse cx="28" cy="-20" rx="34" ry="14" fill="#C8940F" transform="rotate(-20,28,-20)"/>
+              <ellipse cx="-25" cy="-28" rx="32" ry="13" fill="#D4A017" transform="rotate(30,-25,-28)"/>
+              <ellipse cx="5" cy="-38" rx="30" ry="12" fill="#E0B020" transform="rotate(-5,5,-38)"/>
+              <ellipse cx="35" cy="-10" rx="28" ry="12" fill="#D4A017" transform="rotate(40,35,-10)"/>
+              <ellipse cx="-40" cy="-10" rx="26" ry="11" fill="#C8940F" transform="rotate(-35,-40,-10)"/>
+              <!-- Highlights -->
+              <ellipse cx="-5" cy="-20" rx="12" ry="4" fill="#FFF" opacity="0.08" transform="rotate(-10)"/>
+            </g>
+            <!-- Scattered chips -->
+            <ellipse cx="40" cy="60" rx="20" ry="8" fill="#D4A017" transform="rotate(35,40,60)" opacity="0.8"/>
+            <ellipse cx="240" cy="50" rx="18" ry="7" fill="#C8940F" transform="rotate(-20,240,50)" opacity="0.7"/>
+            <ellipse cx="220" cy="180" rx="16" ry="6" fill="#E0B020" transform="rotate(45,220,180)" opacity="0.7"/>
+            <!-- Coconut oil drop -->
+            <circle cx="60" cy="170" r="5" fill="#D4A017" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="product-card-body">
+          <div class="rating">★★★★★</div>
+          <div class="product-name">Banana Chips</div>
+          <p class="product-desc">Thinly sliced raw bananas fried to perfection in cold-pressed coconut oil. Crispy, golden, and lightly salted.</p>
+          <div class="product-meta">
+            <div class="product-price">₹149 <span>/ 200g</span></div>
+            <button class="card-btn" onclick="event.stopPropagation();showDetail('banana-chips')">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Tomato Murukku -->
+      <div class="product-card reveal reveal-delay-2" onclick="showDetail('tomato-murukku')">
+        <div class="product-card-img">
+          <svg viewBox="0 0 280 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1C0A04,#2D1408)">
+            <radialGradient id="tmGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#B22222" stop-opacity="0.2"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="220" fill="url(#tmGlow)"/>
+            <g transform="translate(140,115)">
+              <!-- Multiple murukku spirals -->
+              <path d="M0,0 C6,-22 28,-32 40,-18 C52,-4 46,18 30,24 C14,30 -10,20 -14,4 C-18,-12 -8,-30 6,-34 C22,-38 44,-26 50,-8 C56,10 48,32 30,38 C12,44 -12,34 -16,16" stroke="#B22222" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M0,0 C6,-22 28,-32 40,-18 C52,-4 46,18 30,24 C14,30 -10,20 -14,4 C-18,-12 -8,-30 6,-34 C22,-38 44,-26 50,-8 C56,10 48,32 30,38 C12,44 -12,34 -16,16" stroke="#CC2E2E" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+            </g>
+            <g transform="translate(65,80)">
+              <path d="M0,0 C4,-14 18,-20 25,-12 C32,-4 28,10 18,14 C8,18 -6,12 -8,2 C-10,-8 -4,-20 4,-22 C14,-24 28,-16 32,-6 C36,6 30,20 20,24 C10,28 -6,22 -8,12" stroke="#8B1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(210,150)">
+              <path d="M0,0 C3,-10 13,-14 18,-8 C23,-2 20,8 13,10 C6,12 -4,8 -6,1 C-8,-6 -3,-14 3,-16 C10,-18 20,-12 23,-4" stroke="#B22222" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Tomato specks -->
+            <circle cx="80" cy="160" r="4" fill="#CC3333" opacity="0.7"/>
+            <circle cx="200" cy="50" r="3" fill="#B22222" opacity="0.6"/>
+            <circle cx="250" cy="150" r="3.5" fill="#D44" opacity="0.5"/>
+            <!-- Chili powder dusting -->
+            <ellipse cx="140" cy="190" rx="70" ry="8" fill="#8B1A1A" opacity="0.15"/>
+          </svg>
+        </div>
+        <div class="product-card-body">
+          <div class="rating">★★★★★</div>
+          <div class="product-name">Tomato Murukku</div>
+          <p class="product-desc">Spiral-shaped rice flour murukku infused with sundried tomato and select spices. A Malabar street-food icon.</p>
+          <div class="product-meta">
+            <div class="product-price">₹129 <span>/ 200g</span></div>
+            <button class="card-btn" onclick="event.stopPropagation();showDetail('tomato-murukku')">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: Payyoli Mixture -->
+      <div class="product-card reveal reveal-delay-3" onclick="showDetail('payyoli-mixture')">
+        <div class="product-card-img">
+          <svg viewBox="0 0 280 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1A0C06,#281408)">
+            <radialGradient id="pmGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#C0781A" stop-opacity="0.25"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="220" fill="url(#pmGlow)"/>
+            <!-- Mixture scattered colorfully -->
+            <g transform="translate(140,115)">
+              <!-- Sev/boondi -->
+              <circle cx="-40" cy="-20" r="5" fill="#D4A017" opacity="0.9"/>
+              <circle cx="-20" cy="-35" r="4.5" fill="#C0781A" opacity="0.9"/>
+              <circle cx="10" cy="-40" r="5" fill="#D4A017" opacity="0.85"/>
+              <circle cx="35" cy="-25" r="4" fill="#228B22" opacity="0.8"/>
+              <circle cx="45" cy="5" r="5" fill="#D4A017" opacity="0.9"/>
+              <circle cx="30" cy="30" r="4.5" fill="#C0781A" opacity="0.85"/>
+              <circle cx="-5" cy="40" r="5" fill="#8B1A1A" opacity="0.9"/>
+              <circle cx="-35" cy="25" r="4.5" fill="#D4A017" opacity="0.85"/>
+              <circle cx="-48" cy="5" r="4" fill="#C0781A" opacity="0.8"/>
+              <!-- Peanuts -->
+              <ellipse cx="-15" cy="10" rx="10" ry="6" fill="#C8940F" transform="rotate(20)"/>
+              <ellipse cx="20" cy="-10" rx="9" ry="5.5" fill="#D4A017" transform="rotate(-15)"/>
+              <ellipse cx="5" cy="20" rx="10" ry="6" fill="#C8940F" transform="rotate(30)"/>
+              <!-- Curry leaves -->
+              <ellipse cx="-30" cy="-5" rx="7" ry="3" fill="#228B22" transform="rotate(45)" opacity="0.9"/>
+              <ellipse cx="25" cy="18" rx="6" ry="2.5" fill="#2D7B22" transform="rotate(-30)" opacity="0.85"/>
+              <!-- Sev sticks -->
+              <rect x="-10" y="-15" width="20" height="4" rx="2" fill="#D4A017" transform="rotate(-25)"/>
+              <rect x="10" y="5" width="18" height="3.5" rx="2" fill="#C0781A" transform="rotate(40)"/>
+              <rect x="-25" y="12" width="16" height="3.5" rx="2" fill="#D4A017" transform="rotate(-10)"/>
+            </g>
+            <!-- More scattered elements -->
+            <circle cx="40" cy="40" r="4" fill="#C0781A" opacity="0.7"/>
+            <circle cx="235" cy="60" r="4.5" fill="#D4A017" opacity="0.6"/>
+            <circle cx="60" cy="175" r="4" fill="#228B22" opacity="0.6"/>
+            <circle cx="220" cy="175" r="3.5" fill="#8B1A1A" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="product-card-body">
+          <div class="rating">★★★★★</div>
+          <div class="product-name">Payyoli Mixture</div>
+          <p class="product-desc">A legendary Malabar blend of sev, boondi, curry-leaf peanuts and crispy lentils. Fiery, aromatic, unforgettable.</p>
+          <div class="product-meta">
+            <div class="product-price">₹139 <span>/ 250g</span></div>
+            <button class="card-btn" onclick="event.stopPropagation();showDetail('payyoli-mixture')">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4: Potato Chips -->
+      <div class="product-card reveal reveal-delay-4" onclick="showDetail('potato-chips')">
+        <div class="product-card-img">
+          <span class="product-tag" style="background:var(--forest);color:white">New Flavour</span>
+          <svg viewBox="0 0 280 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1C1408,#281E10)">
+            <radialGradient id="pcGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#F5E642" stop-opacity="0.15"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="220" fill="url(#pcGlow)"/>
+            <!-- Wavy potato chips pile -->
+            <g transform="translate(140,120)">
+              <path d="M-55,20 Q-30,-10 0,5 Q30,18 55,0 Q70,-12 75,5 Q70,25 50,30 Q20,40 -20,38 Q-55,36 -65,20 Q-75,8 -55,20z" fill="#F0DC30" opacity="0.9"/>
+              <path d="M-50,5 Q-25,-22 5,-8 Q35,5 60,-10 Q68,-20 65,-5 Q60,15 38,22 Q10,30 -25,28 Q-58,26 -62,10 Q-66,-4 -50,5z" fill="#E8D020" opacity="0.9"/>
+              <path d="M-42,-12 Q-18,-36 10,-22 Q38,-8 62,-22 Q68,-28 62,-14 Q55,4 30,12 Q4,20 -28,18 Q-55,16 -56,2 Q-57,-12 -42,-12z" fill="#F5E642" opacity="0.85"/>
+              <path d="M-35,-26 Q-12,-48 14,-36 Q40,-24 60,-36 Q64,-40 58,-28 Q50,-12 26,0 Q0,10 -26,8 Q-50,6 -50,-6 Q-50,-18 -35,-26z" fill="#E0CC1A" opacity="0.85"/>
+              <!-- Highlights -->
+              <path d="M-30,-30 Q-5,-50 20,-40 Q35,-34 32,-22" stroke="white" stroke-width="2" fill="none" opacity="0.12"/>
+              <!-- Shadow beneath -->
+              <ellipse cx="0" cy="35" rx="72" ry="15" fill="#1C1408" opacity="0.4"/>
+            </g>
+            <!-- Scattered wavy chips -->
+            <path d="M30,40 Q42,28 55,38 Q60,44 52,50 Q40,54 30,44 Q26,38 30,40z" fill="#F0DC30" opacity="0.75" transform="rotate(15,42,45)"/>
+            <path d="M210,160 Q222,148 235,158 Q240,164 232,170 Q220,174 210,164 Q206,158 210,160z" fill="#E8D020" opacity="0.7" transform="rotate(-20,222,162)"/>
+            <path d="M215,35 Q228,24 240,33 Q245,39 237,45 Q225,49 215,40 Q212,34 215,35z" fill="#F5E642" opacity="0.6" transform="rotate(25,228,37)"/>
+            <!-- Salt specks -->
+            <circle cx="120" cy="90" r="2" fill="white" opacity="0.35"/>
+            <circle cx="165" cy="85" r="1.5" fill="white" opacity="0.3"/>
+            <circle cx="155" cy="100" r="2" fill="white" opacity="0.25"/>
+          </svg>
+        </div>
+        <div class="product-card-body">
+          <div class="rating">★★★★☆</div>
+          <div class="product-name">Potato Chips</div>
+          <p class="product-desc">Wavy-cut potatoes from the Kerala hills, fried in sunflower oil with a signature hint of rock salt and pepper.</p>
+          <div class="product-meta">
+            <div class="product-price">₹119 <span>/ 200g</span></div>
+            <button class="card-btn" onclick="event.stopPropagation();showDetail('potato-chips')">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top:2.5rem">
+      <a href="#" class="btn-outline" onclick="navigate('products')">View All Products</a>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section kerala-pattern reveal">
+    <div class="text-center">
+      <div class="section-label" style="color:rgba(212,160,23,0.7)">Our Promise</div>
+      <h2 class="section-title" style="color:white">Why Families Choose <span style="color:var(--turmeric-lt)">MalbarSwaad</span></h2>
+      <div class="divider center"></div>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.5)">Every quality promise we make is a commitment to the tradition that shaped us.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🏺</div>
+        <div class="why-title">Authentic Recipes</div>
+        <p class="why-desc">Centuries-old Malabar recipes — unchanged, uncompromised. The same taste your grandparents knew.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">🌿</div>
+        <div class="why-title">Premium Ingredients</div>
+        <p class="why-desc">Hand-sourced raw bananas, cold-pressed coconut oil, and naturally grown spices. No substitutes. Ever.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">✨</div>
+        <div class="why-title">Hygienic Production</div>
+        <p class="why-desc">ISO-certified kitchen. Every batch is tested, sealed fresh, and dispatched within 24 hours of production.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon">❤️</div>
+        <div class="why-title">Loved Across India</div>
+        <p class="why-desc">From Kerala to Mumbai, Delhi to Bangalore — 50,000+ families trust MalbarSwaad as their snack of choice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="text-center reveal">
+      <div class="section-label">Happy Customers</div>
+      <h2 class="section-title">Voices That <span>Inspire Us</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The banana chips are exactly like what my nani used to make in her village kitchen. I literally cried opening the packet. Pure nostalgia in every bite."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">P</div>
+          <div><div class="author-name">Priya Menon</div><div class="author-loc">Mumbai, Maharashtra</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Ordered 5 packs of Payyoli Mixture for our Diwali gifting. Every single guest asked where I got it from. MalbarSwaad has become our go-to for gifting."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">R</div>
+          <div><div class="author-name">Rahul Sharma</div><div class="author-loc">New Delhi</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"As a Keralite living in Bangalore, finding snacks that taste like home is nearly impossible. MalbarSwaad changed that. The packaging is beautiful too!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div><div class="author-name">Ananya Krishnan</div><div class="author-loc">Bangalore, Karnataka</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPANSION SECTION -->
+  <section class="section expansion-section reveal">
+    <div class="expansion-inner">
+      <div class="expansion-grid">
+        <div>
+          <div class="section-label" style="color:rgba(240,192,64,0.8)">Our Journey</div>
+          <h2 class="expansion-title">From Kerala to <span style="color:var(--turmeric-lt)">Mumbai</span> — and Beyond</h2>
+          <p class="expansion-subtitle">What began as a home kitchen in Kozhikode now reaches doorsteps across India. We're just getting started.</p>
+          <div class="city-pills">
+            <span class="city-pill active">🏠 Kozhikode</span>
+            <span class="city-pill active">🌆 Mumbai</span>
+            <span class="city-pill active">🌃 Bangalore</span>
+            <span class="city-pill">🌇 Delhi — Coming Soon</span>
+            <span class="city-pill">🌁 Chennai — Coming Soon</span>
+          </div>
+          <div style="margin-top:2rem">
+            <a href="#" class="btn-gold" onclick="navigate('services')">Partner With Us →</a>
+          </div>
+        </div>
+        <div class="expansion-map" style="position:relative;z-index:1">
+          <div class="map-stat"><div class="map-stat-num">3+</div><div class="map-stat-lbl">Cities Served</div></div>
+          <div class="map-stat"><div class="map-stat-num">50K+</div><div class="map-stat-lbl">Happy Customers</div></div>
+          <div class="map-stat"><div class="map-stat-num">10+</div><div class="map-stat-lbl">Retail Partners</div></div>
+          <div class="map-stat"><div class="map-stat-num">2025</div><div class="map-stat-lbl">Pan India Target</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section-sm gallery-section">
+    <div class="text-center reveal" style="margin-bottom:0">
+      <div class="section-label">Behind the Craft</div>
+      <h2 class="section-title">From Our <span>Kitchen to Yours</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" style="grid-column:span 2;grid-row:span 2">
+        <svg viewBox="0 0 500 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#1A0D05">
+          <radialGradient id="g1" cx="40%" cy="60%"><stop offset="0%" stop-color="#D4A017" stop-opacity="0.3"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+          <rect width="500" height="480" fill="#1A0D05"/><rect width="500" height="480" fill="url(#g1)"/>
+          <!-- Large feast spread on banana leaf -->
+          <ellipse cx="250" cy="300" rx="230" ry="150" fill="#2D5016" opacity="0.8"/>
+          <line x1="30" y1="300" x2="470" y2="300" stroke="#3D6B20" stroke-width="2" opacity="0.4"/>
+          <!-- Large mound of banana chips -->
+          <g transform="translate(160,290)">
+            <ellipse cx="0" cy="0" rx="80" ry="32" fill="#C8940F"/>
+            <ellipse cx="0" cy="-18" rx="72" ry="28" fill="#D4A017"/>
+            <ellipse cx="0" cy="-34" rx="62" ry="24" fill="#E0B020"/>
+            <ellipse cx="0" cy="-48" rx="52" ry="20" fill="#D4A017"/>
+            <ellipse cx="0" cy="-60" rx="40" ry="16" fill="#C8940F"/>
+            <ellipse cx="0" cy="-70" rx="28" ry="12" fill="#E0B020"/>
+          </g>
+          <!-- Large murukku -->
+          <g transform="translate(340,270)">
+            <path d="M0,0 C8,-28 36,-40 50,-22 C64,-4 56,22 36,30 C16,38 -10,24 -16,4 C-22,-16 -8,-36 8,-40 C26,-44 52,-30 58,-10 C64,12 54,38 34,44 C14,50 -14,38 -20,16" stroke="#8B1A1A" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M0,0 C8,-28 36,-40 50,-22 C64,-4 56,22 36,30 C16,38 -10,24 -16,4 C-22,-16 -8,-36 8,-40 C26,-44 52,-30 58,-10 C64,12 54,38 34,44 C14,50 -14,38 -20,16" stroke="#CC3333" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.6"/>
+          </g>
+          <!-- Brass vessels -->
+          <ellipse cx="80" cy="220" rx="28" ry="14" fill="#C0781A"/>
+          <rect x="56" y="180" width="48" height="42" rx="4" fill="#C8940F"/>
+          <ellipse cx="80" cy="178" rx="28" ry="10" fill="#D4A017"/>
+          <!-- Coconut halves -->
+          <circle cx="400" cy="160" r="32" fill="#2D1810"/>
+          <ellipse cx="400" cy="155" rx="28" ry="18" fill="#F5EDD6"/>
+          <ellipse cx="400" cy="153" rx="22" ry="12" fill="#E8D9B5"/>
+          <!-- Scattered spices -->
+          <circle cx="100" cy="350" r="5" fill="#D4A017" opacity="0.8"/>
+          <circle cx="430" cy="340" r="4" fill="#8B1A1A" opacity="0.7"/>
+          <circle cx="300" cy="380" r="4" fill="#C0781A" opacity="0.7"/>
+          <!-- Ambient glow -->
+          <radialGradient id="centreGlow" cx="50%" cy="65%"><stop offset="0%" stop-color="#D4A017" stop-opacity="0.15"/><stop offset="70%" stop-opacity="0"/></radialGradient>
+          <ellipse cx="250" cy="310" rx="200" ry="140" fill="url(#centreGlow)"/>
+          <text x="250" y="440" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#D4A017" opacity="0.5" font-style="italic">Traditional Kerala Feast Spread</text>
+        </svg>
+        <div class="gallery-overlay">🌿</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 250 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#2D1A0A">
+          <rect width="250" height="240" fill="#2D1A0A"/>
+          <radialGradient id="g2" cx="50%" cy="50%"><stop offset="0%" stop-color="#C0781A" stop-opacity="0.3"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+          <rect width="250" height="240" fill="url(#g2)"/>
+          <ellipse cx="125" cy="150" rx="80" ry="55" fill="#3D2010"/>
+          <!-- Frying close-up -->
+          <g transform="translate(125,145)">
+            <ellipse cx="0" cy="10" rx="70" ry="22" fill="#5A2E15"/>
+            <ellipse cx="0" cy="5" rx="65" ry="18" fill="#D4A017" opacity="0.3"/>
+            <ellipse cx="-20" cy="0" rx="28" ry="12" fill="#C8940F" transform="rotate(20)"/>
+            <ellipse cx="18" cy="-5" rx="26" ry="11" fill="#D4A017" transform="rotate(-12)"/>
+            <ellipse cx="0" cy="-12" rx="24" ry="10" fill="#E0B020" transform="rotate(5)"/>
+          </g>
+          <g stroke="#D4A017" stroke-width="1.5" fill="none" opacity="0.4">
+            <path d="M100,100 Q95,80 102,60"/>
+            <path d="M125,95 Q120,75 127,55"/>
+            <path d="M150,100 Q145,80 152,60"/>
+          </g>
+          <text x="125" y="220" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#D4A017" opacity="0.6" font-style="italic">Frying in Pure Coconut Oil</text>
+        </svg>
+        <div class="gallery-overlay">🔥</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 250 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#F5EDD6">
+          <rect width="250" height="240" fill="#F5EDD6"/>
+          <!-- Packaging/product shot -->
+          <rect x="60" y="30" width="130" height="160" rx="12" fill="#8B1A1A" stroke="#C8940F" stroke-width="2"/>
+          <rect x="70" y="40" width="110" height="140" rx="10" fill="#A52020"/>
+          <text x="125" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="white" font-weight="bold">Malbar</text>
+          <text x="125" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#D4A017" font-weight="bold" font-style="italic">Swaad</text>
+          <ellipse cx="125" cy="145" rx="35" ry="8" fill="#D4A017" opacity="0.3"/>
+          <text x="125" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#D4A017">BANANA CHIPS</text>
+          <!-- Gold seal -->
+          <circle cx="125" cy="80" r="20" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <circle cx="125" cy="80" r="14" fill="#D4A017" opacity="0.15"/>
+          <text x="125" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#D4A017">PREMIUM</text>
+          <text x="125" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#8B1A1A" opacity="0.6" font-style="italic">Premium Packaging</text>
+        </svg>
+        <div class="gallery-overlay">📦</div>
+      </div>
+      <div class="gallery-item" style="grid-column:span 2">
+        <svg viewBox="0 0 500 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:#1C0A04">
+          <rect width="500" height="240" fill="#1C0A04"/>
+          <!-- Spice market flat lay -->
+          <radialGradient id="g4" cx="50%" cy="50%"><stop offset="0%" stop-color="#C0781A" stop-opacity="0.2"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+          <rect width="500" height="240" fill="url(#g4)"/>
+          <!-- Spice bowls -->
+          <ellipse cx="80" cy="120" rx="50" ry="22" fill="#3D2010"/>
+          <ellipse cx="80" cy="110" rx="45" ry="18" fill="#CC3333"/>
+          <ellipse cx="80" cy="108" rx="40" ry="14" fill="#E84040" opacity="0.7"/>
+          <text x="80" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#D4A017" opacity="0.7">Red Chilli</text>
+
+          <ellipse cx="190" cy="120" rx="50" ry="22" fill="#3D2010"/>
+          <ellipse cx="190" cy="110" rx="45" ry="18" fill="#D4A017"/>
+          <ellipse cx="190" cy="108" rx="40" ry="14" fill="#E0B820" opacity="0.7"/>
+          <text x="190" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#D4A017" opacity="0.7">Turmeric</text>
+
+          <ellipse cx="300" cy="120" rx="50" ry="22" fill="#3D2010"/>
+          <ellipse cx="300" cy="110" rx="45" ry="18" fill="#3D6B20"/>
+          <ellipse cx="300" cy="108" rx="40" ry="14" fill="#4A8025" opacity="0.7"/>
+          <text x="300" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#D4A017" opacity="0.7">Curry Leaf</text>
+
+          <ellipse cx="410" cy="120" rx="50" ry="22" fill="#3D2010"/>
+          <ellipse cx="410" cy="110" rx="45" ry="18" fill="#C8940F"/>
+          <ellipse cx="410" cy="108" rx="40" ry="14" fill="#D4A820" opacity="0.7"/>
+          <text x="410" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#D4A017" opacity="0.7">Coconut Oil</text>
+          <text x="250" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#D4A017" opacity="0.5" font-style="italic">Sourced from Kerala's Finest Farms</text>
+        </svg>
+        <div class="gallery-overlay">🌶️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="section-label" style="color:rgba(212,160,23,0.6);justify-content:center">Stay Connected</div>
+    <h2 class="section-title" style="color:white;margin-bottom:0.5rem">Get Exclusive Offers &amp; <span style="color:var(--turmeric-lt)">New Arrivals</span></h2>
+    <p class="section-subtitle" style="color:rgba(255,255,255,0.45)">Join 10,000+ food lovers who get early access to new flavours, seasonal packs, and special discounts.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address">
+      <button class="btn-gold" style="border-radius:50px;white-space:nowrap">Subscribe →</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-main">MalbarSwaad</span>
+        <span class="logo-sub">Authentic • Traditional • Premium</span>
+        <p>Reviving the soul of India's traditional snacks — one golden chip at a time. Born in Kerala, loved across the nation.</p>
+        <div class="footer-socials">
+          <a class="social-link" title="Instagram">📸</a>
+          <a class="social-link" title="Facebook">📘</a>
+          <a class="social-link" title="YouTube">▶️</a>
+          <a class="social-link" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#" onclick="showDetail('banana-chips')">Banana Chips</a></li>
+          <li><a href="#" onclick="showDetail('tomato-murukku')">Tomato Murukku</a></li>
+          <li><a href="#" onclick="showDetail('payyoli-mixture')">Payyoli Mixture</a></li>
+          <li><a href="#" onclick="showDetail('potato-chips')">Potato Chips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('about')">Our Story</a></li>
+          <li><a href="#" onclick="navigate('services')">Services</a></li>
+          <li><a href="#" onclick="navigate('services')">Franchise</a></li>
+          <li><a href="#" onclick="navigate('services')">Bulk Orders</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">📍 Kozhikode, Kerala</a></li>
+          <li><a href="#">📞 +91 90001 00001</a></li>
+          <li><a href="#">✉️ hello@malbarswaad.in</a></li>
+          <li><a href="#">⏰ Mon–Sat, 9am–6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 MalbarSwaad. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- =============================================
+     PRODUCTS PAGE
+     ============================================= -->
+<div class="page" id="page-products">
+  <div class="page-hero">
+    <div style="position:relative;z-index:1">
+      <div class="section-label" style="justify-content:center">Our Collection</div>
+      <h1 class="section-title" style="color:white">Crafted with <span>Tradition</span></h1>
+      <div class="divider center"></div>
+      <p style="color:rgba(255,255,255,0.55);max-width:50ch;margin:0 auto;text-align:center;line-height:1.8">Every snack is a masterpiece of flavour, texture and heritage. Discover MalbarSwaad's signature range.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--warm-white)">
+    <!-- Filter bar -->
+    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2rem">
+      <button class="card-btn" style="background:var(--crimson);color:white;padding:8px 18px">All Products</button>
+      <button class="card-btn" style="padding:8px 18px">Kerala Classics</button>
+      <button class="card-btn" style="padding:8px 18px">Malabar Specials</button>
+      <button class="card-btn" style="padding:8px 18px">New Arrivals</button>
+    </div>
+    <div class="products-page-grid">
+      <!-- Full product cards with detail -->
+      <div class="product-full-card reveal" onclick="showDetail('banana-chips')">
+        <div class="product-full-img">
+          <span class="product-tag">Bestseller</span>
+          <svg viewBox="0 0 280 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#2D1A0A,#3D2510)">
+            <radialGradient id="p1glow" cx="50%" cy="55%"><stop offset="0%" stop-color="#D4A017" stop-opacity="0.25"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="260" fill="url(#p1glow)"/>
+            <ellipse cx="140" cy="180" rx="85" ry="32" fill="#1A0D05" opacity="0.5"/>
+            <g transform="translate(140,160)">
+              <ellipse cx="-20" cy="10" rx="42" ry="18" fill="#C8940F" transform="rotate(20)"/>
+              <ellipse cx="15" cy="0" rx="44" ry="19" fill="#D4A017" transform="rotate(-15)"/>
+              <ellipse cx="-8" cy="-16" rx="40" ry="17" fill="#E0B020" transform="rotate(8)"/>
+              <ellipse cx="22" cy="-26" rx="38" ry="16" fill="#C8940F" transform="rotate(-22)"/>
+              <ellipse cx="-18" cy="-34" rx="36" ry="14" fill="#D4A017" transform="rotate(25)"/>
+              <ellipse cx="5" cy="-45" rx="32" ry="13" fill="#E0B020" transform="rotate(-5)"/>
+            </g>
+            <ellipse cx="50" cy="80" rx="18" ry="7" fill="#D4A017" transform="rotate(30,50,80)" opacity="0.7"/>
+            <ellipse cx="230" cy="60" rx="16" ry="6" fill="#C8940F" transform="rotate(-20,230,60)" opacity="0.65"/>
+            <!-- Banana -->
+            <path d="M230,190 Q250,160 245,140" stroke="#D4A017" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="product-full-body">
+          <div class="product-full-region">🌴 Kerala Classic</div>
+          <div class="product-full-name">Nadan Banana Chips</div>
+          <div class="rating" style="margin-bottom:0.7rem">★★★★★ <span style="font-size:0.78rem;color:var(--text-light);margin-left:4px">(1.2k reviews)</span></div>
+          <p class="product-full-desc">The crown jewel of Malabar snacks. Raw bananas sliced with precision and fried in cold-pressed coconut oil to achieve that signature golden crunch. Lightly salted with pink Himalayan rock salt.</p>
+          <div class="product-tags">
+            <span class="product-tag-pill">Coconut Oil Fried</span>
+            <span class="product-tag-pill">No Preservatives</span>
+            <span class="product-tag-pill">Gluten Free</span>
+            <span class="product-tag-pill">Vegan</span>
+          </div>
+          <div class="product-full-footer">
+            <div class="product-price">₹149 <span>/ 200g</span></div>
+            <button class="btn-primary" style="padding:0.6rem 1.2rem;font-size:0.82rem">View Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-full-card reveal reveal-delay-1" onclick="showDetail('tomato-murukku')">
+        <div class="product-full-img">
+          <svg viewBox="0 0 280 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1C0A04,#2D1408)">
+            <radialGradient id="p2glow" cx="50%" cy="55%"><stop offset="0%" stop-color="#B22222" stop-opacity="0.25"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="260" fill="url(#p2glow)"/>
+            <g transform="translate(140,130)">
+              <path d="M0,0 C8,-28 36,-40 50,-22 C64,-4 56,22 36,30 C16,38 -10,24 -16,4 C-22,-16 -8,-36 8,-40 C26,-44 52,-30 58,-10 C64,12 54,38 34,44 C14,50 -14,38 -20,16" stroke="#8B1A1A" stroke-width="10" fill="none" stroke-linecap="round"/>
+              <path d="M0,0 C8,-28 36,-40 50,-22 C64,-4 56,22 36,30 C16,38 -10,24 -16,4 C-22,-16 -8,-36 8,-40 C26,-44 52,-30 58,-10 C64,12 54,38 34,44 C14,50 -14,38 -20,16" stroke="#CC3333" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.7"/>
+            </g>
+            <g transform="translate(65,90)">
+              <path d="M0,0 C4,-14 18,-20 25,-12 C32,-4 28,10 18,14 C8,18 -6,12 -8,2 C-10,-8 -4,-20 4,-22" stroke="#B22222" stroke-width="6" fill="none" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(220,180)">
+              <path d="M0,0 C3,-10 13,-14 18,-8 C23,-2 20,8 13,10 C6,12 -4,8 -6,1" stroke="#8B1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
+            </g>
+            <circle cx="90" cy="200" r="5" fill="#CC3333" opacity="0.6"/>
+            <circle cx="210" cy="50" r="4" fill="#B22222" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="product-full-body">
+          <div class="product-full-region">🌶️ Malabar Special</div>
+          <div class="product-full-name">Tomato Murukku</div>
+          <div class="rating" style="margin-bottom:0.7rem">★★★★★ <span style="font-size:0.78rem;color:var(--text-light);margin-left:4px">(987 reviews)</span></div>
+          <p class="product-full-desc">Hand-twisted rice flour spirals kissed with real sundried tomatoes, cumin, and a whisper of asafoetida. Crunchy, tangy, deeply satisfying — a Malabar street classic reimagined.</p>
+          <div class="product-tags">
+            <span class="product-tag-pill">Rice Flour</span>
+            <span class="product-tag-pill">Sundried Tomato</span>
+            <span class="product-tag-pill">Artisan Made</span>
+            <span class="product-tag-pill">Vegan</span>
+          </div>
+          <div class="product-full-footer">
+            <div class="product-price">₹129 <span>/ 200g</span></div>
+            <button class="btn-primary" style="padding:0.6rem 1.2rem;font-size:0.82rem">View Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-full-card reveal reveal-delay-2" onclick="showDetail('payyoli-mixture')">
+        <div class="product-full-img">
+          <svg viewBox="0 0 280 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1A0C06,#281408)">
+            <radialGradient id="p3glow" cx="50%" cy="55%"><stop offset="0%" stop-color="#C0781A" stop-opacity="0.25"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="260" fill="url(#p3glow)"/>
+            <g transform="translate(140,135)">
+              <circle cx="-50" cy="-25" r="6" fill="#D4A017"/><circle cx="-25" cy="-45" r="5" fill="#C0781A"/>
+              <circle cx="10" cy="-52" r="6" fill="#D4A017"/><circle cx="42" cy="-32" r="5" fill="#228B22"/>
+              <circle cx="55" cy="5" r="6" fill="#D4A017"/><circle cx="38" cy="38" r="5" fill="#C0781A"/>
+              <circle cx="-5" cy="52" r="6" fill="#8B1A1A"/><circle cx="-42" cy="32" r="5" fill="#D4A017"/>
+              <circle cx="-58" cy="5" r="5" fill="#C0781A"/>
+              <ellipse cx="-18" cy="12" rx="14" ry="8" fill="#C8940F" transform="rotate(20)"/>
+              <ellipse cx="22" cy="-12" rx="12" ry="7" fill="#D4A017" transform="rotate(-15)"/>
+              <ellipse cx="6" cy="26" rx="13" ry="7.5" fill="#C8940F" transform="rotate(30)"/>
+              <ellipse cx="-35" cy="-6" rx="9" ry="4" fill="#228B22" transform="rotate(45)"/>
+              <rect x="-12" y="-18" width="24" height="5" rx="2.5" fill="#D4A017" transform="rotate(-25)"/>
+              <rect x="12" y="6" width="22" height="4.5" rx="2" fill="#C0781A" transform="rotate(40)"/>
+              <rect x="-30" y="16" width="20" height="4" rx="2" fill="#D4A017" transform="rotate(-10)"/>
+              <circle cx="28" cy="-44" r="4" fill="#D4A017" opacity="0.8"/>
+              <circle cx="-45" cy="18" r="4.5" fill="#8B1A1A" opacity="0.75"/>
+            </g>
+          </svg>
+        </div>
+        <div class="product-full-body">
+          <div class="product-full-region">🏘️ Payyoli Heritage</div>
+          <div class="product-full-name">Payyoli Mixture</div>
+          <div class="rating" style="margin-bottom:0.7rem">★★★★★ <span style="font-size:0.78rem;color:var(--text-light);margin-left:4px">(1.5k reviews)</span></div>
+          <p class="product-full-desc">Named after the ancient Malabar town of Payyoli. A medley of crispy sev, roasted peanuts, boondi, curry-leaf-tossed lentils, and a blend of 9 indigenous spices. Complex, fiery, deeply addictive.</p>
+          <div class="product-tags">
+            <span class="product-tag-pill">9 Spices</span>
+            <span class="product-tag-pill">High Protein</span>
+            <span class="product-tag-pill">Curry Leaf</span>
+            <span class="product-tag-pill">Signature Blend</span>
+          </div>
+          <div class="product-full-footer">
+            <div class="product-price">₹139 <span>/ 250g</span></div>
+            <button class="btn-primary" style="padding:0.6rem 1.2rem;font-size:0.82rem">View Details →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-full-card reveal reveal-delay-3" onclick="showDetail('potato-chips')">
+        <div class="product-full-img">
+          <span class="product-tag" style="background:var(--forest);color:white">New Flavour</span>
+          <svg viewBox="0 0 280 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(145deg,#1C1408,#281E10)">
+            <radialGradient id="p4glow" cx="50%" cy="55%"><stop offset="0%" stop-color="#F5E642" stop-opacity="0.15"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+            <rect width="280" height="260" fill="url(#p4glow)"/>
+            <g transform="translate(140,140)">
+              <path d="M-65,22 Q-35,-14 0,4 Q35,20 65,0 Q82,-14 80,6 Q75,28 55,34 Q22,46 -22,44 Q-65,42 -76,22 Q-86,8 -65,22z" fill="#F0DC30" opacity="0.9"/>
+              <path d="M-58,5 Q-28,-25 6,-10 Q40,6 70,-12 Q80,-22 76,-6 Q70,18 44,26 Q12,36 -28,34 Q-66,32 -70,12 Q-74,-6 -58,5z" fill="#E8D020" opacity="0.9"/>
+              <path d="M-48,-14 Q-20,-42 14,-26 Q46,-10 70,-26 Q78,-32 70,-16 Q62,-2 34,8 Q6,18 -30,16 Q-62,14 -62,0 Q-62,-14 -48,-14z" fill="#F5E642" opacity="0.85"/>
+              <path d="M-38,-30 Q-14,-52 16,-40 Q44,-28 66,-42 Q72,-46 66,-32 Q56,-16 28,-4 Q2,8 -28,6 Q-56,4 -58,-8 Q-60,-20 -38,-30z" fill="#E0CC1A" opacity="0.85"/>
+              <ellipse cx="0" cy="38" rx="80" ry="18" fill="#1C1408" opacity="0.4"/>
+            </g>
+            <path d="M36,46 Q50,32 65,44 Q72,52 62,58 Q48,64 36,52 Q30,44 36,46z" fill="#F0DC30" opacity="0.7" transform="rotate(18,50,52)"/>
+            <path d="M210,190 Q224,176 238,186 Q244,194 234,200 Q220,206 210,196z" fill="#E8D020" opacity="0.65" transform="rotate(-22,224,192)"/>
+          </svg>
+        </div>
+        <div class="product-full-body">
+          <div class="product-full-region">🥔 Kerala Hills</div>
+          <div class="product-full-name">Pepper Potato Chips</div>
+          <div class="rating" style="margin-bottom:0.7rem">★★★★☆ <span style="font-size:0.78rem;color:var(--text-light);margin-left:4px">(654 reviews)</span></div>
+          <p class="product-full-desc">Thick wavy-cut chips from Kerala hill-grown potatoes, fried in sunflower oil and seasoned with coarse black pepper, rock salt, and a secret herb blend. Light, addictive, and absolutely premium.</p>
+          <div class="product-tags">
+            <span class="product-tag-pill">Hill Potatoes</span>
+            <span class="product-tag-pill">Black Pepper</span>
+            <span class="product-tag-pill">Wavy Cut</span>
+            <span class="product-tag-pill">Light Fried</span>
+          </div>
+          <div class="product-full-footer">
+            <div class="product-price">₹119 <span>/ 200g</span></div>
+            <button class="btn-primary" style="padding:0.6rem 1.2rem;font-size:0.82rem">View Details →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reuse footer from home -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-main">MalbarSwaad</span>
+        <span class="logo-sub">Authentic • Traditional • Premium</span>
+        <p>Reviving the soul of India's traditional snacks — one golden chip at a time.</p>
+        <div class="footer-socials">
+          <a class="social-link">📸</a><a class="social-link">📘</a><a class="social-link">▶️</a><a class="social-link">💬</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="#" onclick="showDetail('banana-chips')">Banana Chips</a></li><li><a href="#" onclick="showDetail('tomato-murukku')">Tomato Murukku</a></li><li><a href="#" onclick="showDetail('payyoli-mixture')">Payyoli Mixture</a></li><li><a href="#" onclick="showDetail('potato-chips')">Potato Chips</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('services')">Services</a></li><li><a href="#" onclick="navigate('services')">Franchise</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a>📍 Kozhikode, Kerala</a></li><li><a>📞 +91 90001 00001</a></li><li><a>✉️ hello@malbarswaad.in</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 MalbarSwaad. All rights reserved.</span></div>
+  </footer>
+</div>
+
+<!-- =============================================
+     PRODUCT DETAIL PAGE (dynamic)
+     ============================================= -->
+<div class="page" id="page-detail">
+  <div id="detail-content"></div>
+</div>
+
+<!-- =============================================
+     ABOUT PAGE
+     ============================================= -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div style="position:relative;z-index:1">
+      <div class="section-label" style="justify-content:center">Our Heritage</div>
+      <h1 class="section-title" style="color:white">The <span>MalbarSwaad</span> Story</h1>
+      <div class="divider center"></div>
+      <p style="color:rgba(255,255,255,0.55);max-width:52ch;margin:0 auto;text-align:center;line-height:1.8">"Every tradition worth keeping deserves to be tasted by the next generation."</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--beige)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start" class="reveal">
+      <div>
+        <div class="section-label">Our Beginning</div>
+        <h2 class="section-title">Rooted in <span>Malabar's</span> Rich Tradition</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-mid);line-height:1.9;margin-bottom:1.2rem">MalbarSwaad was born in 2012 in the fragrant lanes of Kozhikode — a city whose name itself is synonymous with spice trade and culinary richness. Our founder, Abdulla Rahman, watched his mother fry banana chips every festival season and knew the world deserved to taste that same love.</p>
+        <p style="color:var(--text-light);line-height:1.9;margin-bottom:1.5rem">What began as weekend batches gifted to neighbours slowly grew into something extraordinary. By 2015, the first packets of MalbarSwaad were being sold at local markets. By 2020, we had orders from Mumbai. Today, we serve families across India — but every chip still carries the spirit of that first Kozhikode kitchen.</p>
+        <blockquote class="story-pullquote">"We don't make snacks. We make memories in a bag."</blockquote>
+        <p style="color:var(--text-light);font-size:0.875rem;margin-top:0.5rem">— Abdulla Rahman, Founder</p>
+      </div>
+      <div>
+        <div class="about-timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2012</div>
+            <div class="timeline-title">The First Batch</div>
+            <p class="timeline-desc">Abdulla's mother's banana chip recipe, first made for a Eid gathering in Kozhikode. 50 packets, sold out in an hour.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2015</div>
+            <div class="timeline-title">MalbarSwaad is Born</div>
+            <p class="timeline-desc">Brand officially registered. First commercial kitchen set up in Kozhikode with 3 employees. Payyoli Mixture added to the range.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2018</div>
+            <div class="timeline-title">Certified Premium</div>
+            <p class="timeline-desc">FSSAI certification obtained. ISO-standard production facility commissioned. 10,000+ customers milestone reached.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2020</div>
+            <div class="timeline-title">Mumbai Expansion</div>
+            <p class="timeline-desc">First cross-state delivery. Retail tie-up with 5 premium Mumbai gourmet stores. Online store launched.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2025</div>
+            <div class="timeline-title">Pan-India Vision</div>
+            <p class="timeline-desc">50,000+ customers. Bangalore added. Plans for Delhi, Chennai and franchise model underway. The journey continues.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--warm-white)">
+    <div class="text-center reveal">
+      <div class="section-label">Purpose</div>
+      <h2 class="section-title">Our <span>Mission</span> & Vision</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="mission-vision-grid reveal">
+      <div class="mv-card mission">
+        <div class="label">Mission</div>
+        <h3>Reviving India's Traditional Snack Heritage</h3>
+        <p>To preserve and share the authentic flavours of Malabar's traditional snack culture — making them accessible, affordable, and aspirational for every Indian household, from Kozhikode to Kanyakumari and beyond.</p>
+      </div>
+      <div class="mv-card vision">
+        <div class="label">Vision</div>
+        <h3>India's Most Loved Premium Snack Brand</h3>
+        <p>To become the household name synonymous with authentic, high-quality traditional Indian snacks — a brand that every Indian trusts, gifts with pride, and reaches for when they want the real taste of home.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--beige)">
+    <div class="text-center reveal">
+      <div class="section-label">Our Values</div>
+      <h2 class="section-title">What We <span>Stand For</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="team-values reveal">
+      <div class="value-card">
+        <div class="value-icon">🏺</div>
+        <div class="value-title">Authenticity</div>
+        <p class="value-desc">No shortcuts. Every recipe is exactly as it was handed down — unchanged, unmodified, unreduced.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <div class="value-title">Purity</div>
+        <p class="value-desc">No artificial colours, flavours, or preservatives. Only what nature provides — nothing more.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Community</div>
+        <p class="value-desc">We source locally, employ locally, and give back to the communities that made us possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-main">MalbarSwaad</span><span class="logo-sub">Authentic • Traditional • Premium</span><p>Reviving the soul of India's traditional snacks — one golden chip at a time.</p><div class="footer-socials"><a class="social-link">📸</a><a class="social-link">📘</a><a class="social-link">▶️</a><a class="social-link">💬</a></div></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="#" onclick="navigate('products')">View All</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('services')">Services</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a>📍 Kozhikode, Kerala</a></li><li><a>📞 +91 90001 00001</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 MalbarSwaad. All rights reserved.</span></div>
+  </footer>
+</div>
+
+<!-- =============================================
+     SERVICES PAGE
+     ============================================= -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div style="position:relative;z-index:1">
+      <div class="section-label" style="justify-content:center">Work With Us</div>
+      <h1 class="section-title" style="color:white">Partner &amp; <span>Distribution</span></h1>
+      <div class="divider center"></div>
+      <p style="color:rgba(255,255,255,0.55);max-width:52ch;margin:0 auto;text-align:center;line-height:1.8">Whether you want to stock MalbarSwaad in your store, order in bulk, or build a franchise — we make it easy.</p>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--warm-white)">
+    <div class="text-center reveal">
+      <div class="section-label">Our Services</div>
+      <h2 class="section-title">How We Can <span>Serve You</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">📦</div>
+        <div class="service-title">Bulk Orders</div>
+        <p class="service-desc">Order large quantities for corporate gifting, events, weddings, or festive hampers at wholesale rates with premium packaging options.</p>
+        <ul class="service-perks">
+          <li>Minimum 10kg orders accepted</li>
+          <li>Custom branded packaging available</li>
+          <li>Same-week delivery across metros</li>
+          <li>GST invoice provided</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="#contact-form" class="btn-primary" style="width:100%;justify-content:center">Get Bulk Quote →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-wrap">🏪</div>
+        <div class="service-title">Retail Supply</div>
+        <p class="service-desc">Stock MalbarSwaad in your gourmet store, supermarket, or online marketplace. Join our growing network of retail partners across India.</p>
+        <ul class="service-perks">
+          <li>Competitive trade margins</li>
+          <li>Point-of-sale display materials</li>
+          <li>Weekly restocking available</li>
+          <li>Exclusive territory options</li>
+          <li>Marketing co-op support</li>
+        </ul>
+        <a href="#contact-form" class="btn-primary" style="width:100%;justify-content:center">Become a Retailer →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon-wrap">🤝</div>
+        <div class="service-title">Franchise & Distribution</div>
+        <p class="service-desc">Be part of India's fastest-growing premium traditional snack brand. Own a MalbarSwaad distribution franchise and grow with us.</p>
+        <ul class="service-perks">
+          <li>Low investment, high margin model</li>
+          <li>Full brand & training support</li>
+          <li>Exclusive district-level territory</li>
+          <li>Central production supply</li>
+          <li>Digital marketing support</li>
+        </ul>
+        <a href="#contact-form" class="btn-gold" style="width:100%;justify-content:center">Enquire Now →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm contact-cta-section" id="contact-form">
+    <div class="text-center reveal" style="margin-bottom:2rem">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Send Us an <span>Enquiry</span></h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="contact-cta-inner reveal">
+      <div>
+        <div style="margin-bottom:1.5rem">
+          <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--text-dark);margin-bottom:0.4rem">Let's Talk Business</h3>
+          <p style="color:var(--text-light);font-size:0.9rem;line-height:1.7">Fill in the form and our team will reach back within 24 hours with a customised proposal just for you.</p>
+        </div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-field"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="Your name"></div>
+            <div class="form-field"><label class="form-label">Phone Number</label><input type="tel" class="form-input" placeholder="+91 00000 00000"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="you@example.com"></div>
+            <div class="form-field"><label class="form-label">Service Interest</label>
+              <select class="form-input" style="cursor:pointer">
+                <option>Bulk Orders</option>
+                <option>Retail Supply</option>
+                <option>Franchise</option>
+                <option>Distribution</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field"><label class="form-label">Your Message</label><textarea class="form-input form-textarea" placeholder="Tell us about your requirements..."></textarea></div>
+          <button class="btn-primary" style="width:fit-content">Send Enquiry →</button>
+        </div>
+      </div>
+      <div style="min-width:220px">
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div>
+            <div style="font-size:1.5rem;margin-bottom:0.4rem">📍</div>
+            <div style="font-weight:600;color:var(--text-dark);font-size:0.9rem">Our Address</div>
+            <div style="color:var(--text-light);font-size:0.85rem;line-height:1.6">123, Spice Lane, Kozhikode<br>Kerala — 673001</div>
+          </div>
+          <div>
+            <div style="font-size:1.5rem;margin-bottom:0.4rem">📞</div>
+            <div style="font-weight:600;color:var(--text-dark);font-size:0.9rem">Call Us</div>
+            <div style="color:var(--text-light);font-size:0.85rem">+91 90001 00001</div>
+          </div>
+          <div>
+            <div style="font-size:1.5rem;margin-bottom:0.4rem">✉️</div>
+            <div style="font-weight:600;color:var(--text-dark);font-size:0.9rem">Email</div>
+            <div style="color:var(--text-light);font-size:0.85rem">hello@malbarswaad.in</div>
+          </div>
+          <div>
+            <div style="font-size:1.5rem;margin-bottom:0.4rem">⏰</div>
+            <div style="font-weight:600;color:var(--text-dark);font-size:0.9rem">Hours</div>
+            <div style="color:var(--text-light);font-size:0.85rem">Monday–Saturday<br>9:00 AM – 6:00 PM IST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><span class="logo-main">MalbarSwaad</span><span class="logo-sub">Authentic • Traditional • Premium</span><p>Reviving the soul of India's traditional snacks — one golden chip at a time.</p><div class="footer-socials"><a class="social-link">📸</a><a class="social-link">📘</a><a class="social-link">▶️</a><a class="social-link">💬</a></div></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="#" onclick="navigate('products')">View All</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('services')">Services</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a>📍 Kozhikode, Kerala</a></li><li><a>📞 +91 90001 00001</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 MalbarSwaad. All rights reserved.</span></div>
+  </footer>
+</div>
+
+<script>
+/* ===== NAVIGATION SYSTEM ===== */
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + page);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  triggerReveal();
+}
+
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+
+/* ===== PRODUCT DATA ===== */
+const products = {
+  'banana-chips': {
+    name: 'Nadan Banana Chips',
+    region: '🌴 Kerala Classic',
+    tagline: 'The purest expression of Malabar snacking tradition',
+    price: '₹149',
+    weight: '200g',
+    rating: '4.9',
+    reviews: '1,238',
+    taste: 85, crunch: 95, spice: 20, aroma: 90,
+    ingredients: ['Raw Kerala Banana', 'Cold-Pressed Coconut Oil', 'Pink Himalayan Rock Salt', 'Turmeric (trace)'],
+    special: 'Our banana chips are made from a specific variety of raw nendran bananas sourced exclusively from the backwaters of Kerala. Each batch is hand-sliced to exactly 2mm thickness, ensuring that perfect balance of crispness and flavour. Fried only in cold-pressed virgin coconut oil — the same way it has been done for centuries.',
+    color: 'linear-gradient(145deg,#2D1A0A,#3D2510)',
+    svgFill: '#D4A017'
+  },
+  'tomato-murukku': {
+    name: 'Tomato Murukku',
+    region: '🌶️ Malabar Special',
+    tagline: 'A fiery spiral of rice, spice, and sunshine',
+    price: '₹129',
+    weight: '200g',
+    rating: '4.8',
+    reviews: '987',
+    taste: 90, crunch: 85, spice: 70, aroma: 80,
+    ingredients: ['Rice Flour', 'Sundried Tomato Powder', 'Cumin', 'Asafoetida', 'Sesame', 'Coconut Oil', 'Rock Salt'],
+    special: 'The spiralling form of our murukku is hand-twisted by artisan makers using traditional brass moulds passed down through generations. The sundried tomato is sourced from farms in Palakkad and sun-dried for 12 days to concentrate flavour. The result is an intense, tangy depth that no artificial flavouring can replicate.',
+    color: 'linear-gradient(145deg,#1C0A04,#2D1408)',
+    svgFill: '#B22222'
+  },
+  'payyoli-mixture': {
+    name: 'Payyoli Mixture',
+    region: '🏘️ Payyoli Heritage',
+    tagline: 'Nine spices. One legendary blend. Infinite cravings.',
+    price: '₹139',
+    weight: '250g',
+    rating: '4.9',
+    reviews: '1,542',
+    taste: 95, crunch: 88, spice: 80, aroma: 92,
+    ingredients: ['Rice Sev', 'Roasted Peanuts', 'Boondi', 'Chana Dal', 'Curry Leaf', '9-Spice Blend', 'Coconut Oil', 'Red Chilli'],
+    special: 'Payyoli is a small coastal town in Kerala with an outsized culinary legacy. Our mixture recipe comes from a 50-year-old tea-shop tradition in that town — a blend so carefully calibrated that altering even one spice throws the whole balance off. Each ingredient is fried separately at its optimal temperature before being combined in exact proportions.',
+    color: 'linear-gradient(145deg,#1A0C06,#281408)',
+    svgFill: '#C0781A'
+  },
+  'potato-chips': {
+    name: 'Pepper Potato Chips',
+    region: '🥔 Kerala Hills',
+    tagline: 'Thick-cut, slow-fried, boldly seasoned',
+    price: '₹119',
+    weight: '200g',
+    rating: '4.6',
+    reviews: '654',
+    taste: 82, crunch: 78, spice: 50, aroma: 70,
+    ingredients: ['Hill Potatoes', 'Sunflower Oil', 'Coarse Black Pepper', 'Rock Salt', 'Herb Blend', 'Citric Acid'],
+    special: 'Unlike mass-market potato chips made from reconstituted potato paste, ours are sliced from whole potatoes grown at altitude in the Wayanad hills. The higher elevation gives the potatoes a denser, starchier quality that fries up into a distinctly satisfying crunch. Wavy-cut to increase surface area and maximise seasoning adherence.',
+    color: 'linear-gradient(145deg,#1C1408,#281E10)',
+    svgFill: '#F5E642'
+  }
+};
+
+function showDetail(id) {
+  const p = products[id];
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-hero">
+      <div class="detail-hero-img">
+        <svg viewBox="0 0 600 600" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="background:${p.color}">
+          <radialGradient id="dhg" cx="50%" cy="55%"><stop offset="0%" stop-color="${p.svgFill}" stop-opacity="0.3"/><stop offset="100%" stop-opacity="0"/></radialGradient>
+          <rect width="600" height="600" fill="url(#dhg)"/>
+          <text x="300" y="300" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="120" fill="${p.svgFill}" opacity="0.12" font-style="italic">MS</text>
+          <text x="300" y="400" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="${p.svgFill}" opacity="0.5" font-style="italic">${p.name}</text>
+          <!-- Decorative ring -->
+          <circle cx="300" cy="300" r="200" fill="none" stroke="${p.svgFill}" stroke-width="1" stroke-dasharray="6 12" opacity="0.2"/>
+          <circle cx="300" cy="300" r="150" fill="none" stroke="${p.svgFill}" stroke-width="0.5" stroke-dasharray="3 8" opacity="0.15"/>
+        </svg>
+        <div style="position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(28,16,8,0.7);backdrop-filter:blur(10px);border:1px solid rgba(212,160,23,0.2);padding:0.75rem 1.2rem;border-radius:12px;color:white">
+          <div style="font-size:1.4rem;font-family:var(--font-serif);font-weight:700;color:var(--turmeric-lt)">${p.rating}★</div>
+          <div style="font-size:0.72rem;opacity:0.6;letter-spacing:0.06em">${p.reviews} Reviews</div>
+        </div>
+      </div>
+      <div class="detail-hero-content">
+        <div class="product-region-tag">${p.region}</div>
+        <h1>${p.name}</h1>
+        <div class="tagline">${p.tagline}</div>
+        <div class="profile-bars">
+          <div class="profile-bar"><span class="profile-label">Taste</span><div class="profile-track"><div class="profile-fill" style="width:${p.taste}%"></div></div></div>
+          <div class="profile-bar"><span class="profile-label">Crunch</span><div class="profile-track"><div class="profile-fill" style="width:${p.crunch}%"></div></div></div>
+          <div class="profile-bar"><span class="profile-label">Spice</span><div class="profile-track"><div class="profile-fill" style="width:${p.spice}%"></div></div></div>
+          <div class="profile-bar"><span class="profile-label">Aroma</span><div class="profile-track"><div class="profile-fill" style="width:${p.aroma}%"></div></div></div>
+        </div>
+        <div style="font-size:0.8rem;font-weight:600;color:var(--text-mid);margin-bottom:0.5rem;letter-spacing:0.04em">INGREDIENTS</div>
+        <div class="ingredients-list">${p.ingredients.map(i=>`<span class="ing-pill">${i}</span>`).join('')}</div>
+        <div class="why-special">
+          <h3>✦ Why It's Special</h3>
+          <p>${p.special}</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:0.5rem">
+          <div style="font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--crimson)">${p.price}</div>
+          <div style="font-size:0.82rem;color:var(--text-light)">per ${p.weight}</div>
+        </div>
+        <div class="detail-ctas">
+          <a href="#" class="btn-primary" onclick="navigate('services')">Order Now →</a>
+          <a href="#" class="btn-outline" onclick="navigate('products')">← Back to Products</a>
+        </div>
+      </div>
+    </div>
+  `;
+  navigate('detail');
+}
+
+/* ===== SCROLL REVEAL ===== */
+function triggerReveal() {
+  setTimeout(() => {
+    const reveals = document.querySelectorAll('.page.active .reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  }, 100);
+}
+
+/* ===== SCROLL NAV STYLE ===== */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded', () => { triggerReveal(); });
+</script>
+</body>
+</html>
